@@ -1,168 +1,71 @@
-<html>
-    <head>
-        <title>String Function</title>
-</head>
+<?php
+echo strtoupper("hello world") . "<br>";
 
-<body>
+echo strtolower("HELLO WORLD") . "<br>";
 
-    <?php
-    $str_slash=addcslashes("Hello Nisarg","N");
-    echo($str_slash);
-    ?>
-    <br>
+echo ucfirst("hello world") . "<br>";
 
-    <?php
-    $st_lwr=strtolower("Hello aKtiv Software");
-    echo($st_lwr);
-    ?>
-    <br>
+echo ucwords("hello world") . "<br>";
 
-    <?php
-    $st_upp=strtoupper("hello nisarg v");
-    echo($st_upp);
-    ?>
-    <br>
+echo strlen("hello world") . "<br>";
 
-    <?php
-    $st_len=strlen("Hello World");
-    echo($st_len);
-    ?>
-    <br>
+echo strpos("hello world", "world") . "<br>";
 
-    <?php
-    $st_chr=strchr("Hello Aktiv","Aktiv");
-    echo($st_chr);
-    ?>
-    <br>
+echo substr("hello world", 6) . "<br>";
 
-    <?php
-    $st_rep=str_ireplace("World","Aktiv Software","Hello World");
-    echo($st_rep);
-    ?>
-    <br>
+echo trim("  hello world  ") . "<br>";
 
-    <?php
-    $st_ccmp=strcasecmp("hello","HELLO");
-    echo($st_ccmp);
-    ?>
-    <br>
+echo rtrim("  hello world  ") . "<br>";
 
-    <?php
-    $st_cspn=strcspn("Hello World!!!!","!");
-    echo($st_cspn);
-    ?>
-    <br>
+echo ltrim("  hello world  ") . "<br>";
 
-    <?php
-    $st_pos=strpos("Hello This Is Php,Here is only Php","Php");
-    echo($st_pos);
-    ?>
-    <br>
+echo str_replace("world", "PHP", "hello world") . "<br>";
 
-    <?php
-    $st_pbrk=strpbrk("Hello Aktiv Software","AS");
-    echo($st_pbrk);
-    ?>
-    <br>
+echo str_ireplace("WORLD", "PHP", "hello WORLD") . "<br>";
 
-    <?php
-    $st_str=strstr("Hello Aktiv","Aktiv");
-    echo($st_str);
-    ?>
-    <br>    
+echo implode("-", array("hello", "world")) . "<br>";
 
-    <?php
-    $st_rt=strtr("Hilla Warld","ia","eo");
-    echo($st_rt);
-    ?>
-    <br>
+echo explode(" ", "hello world")[1] . "<br>";
 
-    <?php
-    $st_sub=substr("Software Developer",7);
-    echo($st_sub);
-    ?>
-    <br>
+echo strrev("hello world") . "<br>";
 
-    <?php
-    $st_subcmp=substr_compare("Hello Software","Hello Software",0);
-    echo($st_subcmp);
-    ?>
-    <br>
+echo strchr("hello world", "world") . "<br>";
 
-    <?php
-    $st_wrdcnt=str_word_count("Hello How Are You,Good Evening Have A Nice Day!!!");
-    echo($st_wrdcnt);
-    ?>
-    <br>
-    
-    <?php
-    $st_subcnt=substr_count("Hello World .The World Is Nice","World");
-    echo($st_subcnt);
-    ?>
-    <br>
+echo strrchr("hello world", "world") . "<br>";
 
-    <?php
-    $st_subrep=substr_replace("Nisarg","Download",0);
-    echo($st_subrep);
-    ?>
-    <br>
+echo substr_count("hello world", "o") . "<br>";
 
-    <?php
-    $st_trim=("Hello World");
-    echo $st_trim; "<br>";
-    echo trim($st_trim,"Hed");
-    ?>
-    <br>
+echo str_repeat("hello ", 3) . "<br>";
 
-    <?php
-    $st_ucfir=ucfirst("hello World Of Programming");
-    echo($st_ucfir);
-    ?>
-    <br>
+echo str_pad("hello", 10, "_") . "<br>";
 
-    <?php
-    $st_ucwrd=ucwords("aktiv sof");
-    echo($st_ucwrd);
-    ?>
-    <br>
+echo str_word_count("hello world") . "<br>";
 
-    <?php
-    $st_split=str_split("Hello World Of Aktiv Software");
-    print_r($st_split);
-    ?>
-    <br>    
+echo htmlentities("<b>hello world</b>") . "<br>";
 
-    <?php
-    $st_shuffle=str_shuffle("Icreative Technologies");
-    echo($st_shuffle);
-    ?>
-    <br>
+echo htmlspecialchars("<b>hello world</b>") . "<br>";
 
-    <?php
-    $st_rep=str_repeat("Hello",5);
-    echo($st_rep);
-    ?>
-    <br>
+echo addslashes("hello 'world'") . "<br>";
 
-    <?php
-    $st_sndex=soundex("Aktiv");
-    echo($st_sndex);
-    ?>
-    <br>
+echo stripslashes("hello \'world\'") . "<br>";
 
-    <?php
-    $st_rev=strrev("Software");
-    echo($st_rev);
-    ?>
-    <br>
+echo printf("The number is: %d", 10) . "<br>";
 
-    <?php
-    $st_pt=parse_str("name=nisarg&age=22");
-    echo $name.$age;
-    ?>
-    <br>
-    
-</body>
-</html>
+echo sprintf("The number is: %d", 10) . "<br>";
 
+echo vsprintf("The number is: %d", array(10)) . "<br>";
 
+echo strtr("hello world", "elo", "123") . "<br>";
+
+echo base64_encode("hello world") . "<br>";
+
+echo base64_decode("aGVsbG8gd29ybGQ=") . "<br>";
+
+echo chunk_split("hello world", 2, "-") . "<br>";
+
+echo wordwrap("hello world this is a test", 5, "<br>") . "<br>";
+
+echo md5("hello world") . "<br>";
+
+echo sha1("hello world") . "<br>";
+?>
