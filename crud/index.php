@@ -55,7 +55,7 @@ include 'index.html';
         <input type="password" name="password" id="password" onkeyup='check();'><br><br>
 
         <label>Confirm Password:-</label>
-        <input type="password" name="password" id="confirmpassword" onkeyup='check();'><br><br>
+        <input type="password" name="cpass" id="confirmpassword" onkeyup='check();'><br><br>
         <span id="passwordError" class="error"></span>
 
         <label>Address:-</label>

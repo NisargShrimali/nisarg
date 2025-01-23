@@ -7,6 +7,7 @@ if(isset($_POST['add'])){
     $lname = $_POST['lname'];
     $email = $_POST['email'];
     $password = $_POST['password'];
+    $cpass = $_POST['cpass'];
     $address = $_POST['address'];
     $phoneno = $_POST['phoneno'];
     $gender = $_POST['gender'];
@@ -22,8 +23,8 @@ if(isset($_POST['add'])){
         echo "<h3>&nbsp; Failed to upload image!</h3>";
     }
 
-    $sql = "INSERT INTO user(fname,lname,email,password,address,phoneno,gender,hobbies,country,file)
-    VALUES('$fname','$lname','$email','$password','$address','$phoneno','$gender','$hobbies','$country','$filename')";
+    $sql = "INSERT INTO user(fname,lname,email,password,cpass,address,phoneno,gender,hobbies,country,file)
+    VALUES('$fname','$lname','$email','$password','$cpass','$address','$phoneno','$gender','$hobbies','$country','$filename')";
     $conn->query($sql);
 
     header('Location: add.php');
