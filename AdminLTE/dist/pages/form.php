@@ -1,9 +1,6 @@
-   <?php 
-    include 'conn.php';
-    include 'update_data.php';
-    ?>
 <html>
   <head>
+    <title>Own AdminLTE </title>
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@fontsource/source-sans-3@5.0.12/index.css"
@@ -35,70 +32,70 @@
       integrity="sha256-+uGLJmmTKOqBr+2E6KDYs/NRsHxSkONXFHUL0fy2O/4="
       crossorigin="anonymous"
     />
+    
 
   </head>
 
   <?php 
-    include ("header.php"); 
-    include ("sidebar.php");   
-    ?>
-
-<body>                
-      <div class="card card-primary card-outline mb-4">
-        <div class="card-header"><div class="card-title">Update User Details..</div></div>
-
-<form method="POST" action="update.php" enctype="multipart/form-data">
-          <div class="card-body">
-              <input type="hidden" name="id" value="<?php echo $user['id']?>">
-                  <div class="mb-3">
+  include 'conn.php';
+  include ("header.php"); 
+  include ("sidebar.php"); 
+  include ("add1.php");
+  ?>
+  <div class="container mt-5">
+      <div class="card">
+          <div class="card-header"><h2>USER DETAILS FORM</h2></div>
+          <form action="" method="POST" enctype="multipart/form-data">
+              <div class="card-body">
+              <div class="mb-3">
                       <label>First Name:-</label>
-                      <input type="text" name="first_name" class="form-control" value="<?php echo $user['first_name'];?>" />
-                      <span class="text-danger"><?= $fnameErr ?? '' ?></span>
+                      <input type="text" name="first_name" class="form-control" value="<?= htmlspecialchars($fname ?? '') ?>" />
+                      <span class="text-danger"><?= $firstnameErr ?? '' ?></span>
                   </div>
                   <div class="mb-3">
                       <label>Last Name:-</label>
-                      <input type="text" name="last_name" class="form-control" value="<?php echo $user['last_name'];?>" />
+                      <input type="text" name="last_name" class="form-control" value="<?= htmlspecialchars($lname ?? '') ?>" />
                       <span class="text-danger"><?= $lastnameErr ?? '' ?></span>
                   </div>
                   <div class="mb-3">
                       <label>Email:-</label>
-                      <input type="email" name="email" class="form-control" value="<?php echo $user['email'];?>" />
+                      <input type="email" name="email" class="form-control" value="<?= htmlspecialchars($email ?? '') ?>" />
                       <span class="text-danger"><?= $emailErr ?? '' ?></span>
                   </div>
                   <div class="mb-3">
                       <label>Password:-</label>
-                      <input type="password" name="password" value="<?php echo $user['password'];?>" class="form-control" />
+                      <input type="password" name="password" class="form-control"  required />
                       <span class="text-danger"><?= $passwordErr ?? '' ?></span>
                   </div>
                   <div class="mb-3">
                       <label>Confirm Password:-</label>
-                      <input type="password" name="conf_pass" value="<?php echo $user['conf_pass'];?>" class="form-control" />
+                      <input type="password" name="conf_pass" class="form-control" />
                       <span class="text-danger"><?= $cpasswordErr ?? '' ?></span>
                   </div>
           
                   <div class="mb-3">
                       <label>Address:-</label>
-                      <input type="text" name="address" class="form-control" value="<?php echo $user['address'];?>" />
+                      <input type="text" name="address" class="form-control" value="<?= htmlspecialchars($address ?? '') ?>" />
                       <span class="text-danger"><?= $messageErr ?? '' ?></span>
                   </div>
                   <div class="mb-3">
                       <label>Phone Number:-</label>
-                      <input type="text" name="phone_num" class="form-control" value="<?php echo $user['phone_num'];?>" />
+                      <input type="text" name="phone_num" class="form-control" value="<?= htmlspecialchars($phoneno ?? '') ?>" />
                       <span class="text-danger"><?= $numberErr ?? '' ?></span>
                   </div>
                   <div class="mb-3">
                       <label>Gender:-</label>
                       <div>
-                          <input type="radio" name="gender" value="male" <?php echo($user['gender'] == 'male') ? 'checked': '';?>> Male
-                          <input type="radio" name="gender" value="female" <?php echo($user['gender'] == 'female') ? 'checked': '';?>> Female
+                          <input type="radio" name="gender" value="male" <?= isset($gender) && $gender == 'male' ? 'checked' : '' ?>> Male
+                          <input type="radio" name="gender" value="female" <?= isset($gender) && $gender == 'female' ? 'checked' : '' ?>> Female
                       </div>
                       <span class="text-danger"><?= $genderErr ?? '' ?></span>
                   </div>
                   <div class="mb-3">
                       <label>Hobbies:-</label>
                       <div>
-                          <input type="checkbox" name="hobbies[]" value="Cricket" <?php echo strpos($user['hobbies'],'Cricket')!== false ? 'checked':'';?> >Cricket
-                          <input type="checkbox" name="hobbies[]" value="Travelling" <?php echo strpos($user['hobbies'],'Travelling')!== false ? 'checked':'';?> > Travelling
+                          <input type="checkbox" name="hobbies[]" value="Cricket" <?= isset($hobby) && strpos($hobby, 'Cricket') !== false ? 'checked' : '' ?>>Cricket
+                          <input type="checkbox" name="hobbies[]" value="Travelling" <?= isset($hobby) && strpos($hobby, 'Travelling') !== false ? 'checked' : '' ?>> Travelling
                           
                       </div>
                       <span class="text-danger"><?= $hobbiesErr ?? '' ?></span>
@@ -106,9 +103,10 @@
                   <div class="mb-3">
                       <label>Country:-</label>
                       <select name="country" class="form-control">
-                          <option value="India" <?php echo($user['country'] == 'India') ? 'selected':'';?>>India</option>
-                          <option value="USA" <?php echo($user['country'] == 'USA') ? 'selected':'';?>>USA</option>
-                          <option value="UK" <?php echo($user['country'] == 'UK') ? 'selected':'';?>>UK</option>
+                        <option name="" value="">--Please Select one country--</option>
+                          <option value="India" <?= isset($country) && $country == 'India' ? 'selected' : '' ?>>India</option>
+                          <option value="USA" <?= isset($country) && $country == 'USA' ? 'selected' : '' ?>>USA</option>
+                          <option value="UK" <?= isset($country) && $country == 'UK' ? 'selected' : '' ?>>UK</option>
                       </select>
                       <span class="text-danger"><?= $countryErr ?? '' ?></span>
                   </div>
@@ -121,11 +119,14 @@
                   </div>
 
               <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Update</button>
+                  <button type="submit" class="btn btn-primary" name="add">Submit</button>
               </div>
-          </form>       
-                              
-        <?php include ("footer.php"); ?>
+          </form>   
+          </div>
+  </div>
+  
+
+    <?php include ("footer.php"); ?>
     <script
       src="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.10.1/browser/overlayscrollbars.browser.es6.min.js"
       integrity="sha256-dghWARbRe2eLlIJ56wNB+b760ywulqK3DzZYEpsg2fQ="
@@ -164,4 +165,3 @@
     </script>
   </body>
 </html>
-                 

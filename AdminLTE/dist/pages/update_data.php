@@ -9,13 +9,13 @@ if(isset($_GET['id'])){
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
     $id=$_POST['id'];
-    $fname = $_POST['fname'];
-    $lname = $_POST['lname'];
+    $first_name = $_POST['first_name'];
+    $last_name = $_POST['last_name'];
     $email= $_POST['email'];
     $password = $_POST['password'];
-    $cpass = $_POST['cpass'];
+    $conf_pass = $_POST['conf_pass'];
     $address = $_POST['address'];
-    $phoneno = $_POST['phoneno'];
+    $phone_num = $_POST['phone_num'];
     $gender = $_POST['gender'];
     $hobbies = implode(",",$_POST['hobbies']);
     $country = $_POST['country'];
@@ -33,12 +33,12 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             die("Failed to move the uploaded file.");
         }
 
-        $sql = "UPDATE user SET fname='$fname', lname='$lname', email='$email', password='$password',cpass='$cpass', address='$address', phoneno='$phoneno', gender='$gender', hobbies='$hobbies', country='$country', file='$filename' WHERE id='$id'";
+        $sql = "UPDATE user SET first_name='$first_name', last_name='$last_name', email='$email', password='$password',conf_pass='$conf_pass', address='$address', phone_num='$phone_num', gender='$gender', hobbies='$hobbies', country='$country', file='$filename' WHERE id='$id'";
         $conn->query($sql);
     } else {
-        $sql = "UPDATE user SET fname='$fname', lname='$lname', email='$email',password='$password',cpass='$cpass', address='$address', phoneno='$phoneno', gender='$gender', hobbies='$hobbies', country='$country' WHERE id=$id";
+        $sql = "UPDATE user SET first_name='$first_name', last_name='$last_name', email='$email',password='$password',conf_pass='$conf_pass', address='$address', phone_num='$phone_num', gender='$gender', hobbies='$hobbies', country='$country' WHERE id=$id";
         $conn->query($sql);
     }
-    header('Location: add.php');
+    header('Location: display.php');
 }
 ?>

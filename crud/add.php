@@ -1,41 +1,13 @@
 <?php 
 include 'conn.php';
-include 'index.html';
-
-if(isset($_POST['add'])){
-    $fname = $_POST['fname'];
-    $lname = $_POST['lname'];
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    $cpass = $_POST['cpass'];
-    $address = $_POST['address'];
-    $phoneno = $_POST['phoneno'];
-    $gender = $_POST['gender'];
-    $hobbies = implode(",",$_POST['hobbies']);
-    $country = $_POST['country'];
-    $filename = $_FILES["file"]["name"];
-    $tempname = $_FILES["file"]["tmp_name"];
-    $folder = "./uploads/" . $filename;
-    // Now let's move the uploaded image into the folder:
-    if (move_uploaded_file($tempname, $folder)) {
-        echo "<h3>&nbsp; Image uploaded successfully!</h3>";
-    } else {
-        echo "<h3>&nbsp; Failed to upload image!</h3>";
-    }
-
-    $sql = "INSERT INTO user(fname,lname,email,password,cpass,address,phoneno,gender,hobbies,country,file)
-    VALUES('$fname','$lname','$email','$password','$cpass','$address','$phoneno','$gender','$hobbies','$country','$filename')";
-    $conn->query($sql);
-
-    header('Location: add.php');
-        
-      
-}
+include 'insert.php';
 ?>
+
+
 <h2>Users</h2>
 
 <?php
-$result=$conn->query("SELECT * FROM user");
+$result=$conn->query("SELECT * FROM form ");
 ?>
 
 <table border="3">
@@ -54,13 +26,13 @@ $result=$conn->query("SELECT * FROM user");
 
     <?php while($row=$result->fetch_assoc()) { ?>
     <tr>
-        <td><?= $row['fname']?></td>
-        <td><?= $row['lname']?></td>
+        <td><?= $row['first_name']?></td>
+        <td><?= $row['last_name']?></td>
         <td><?= $row['email']?></td>
         <td><?= $row['address']?></td>
-        <td><?= $row['phoneno']?></td>
+        <td><?= $row['phone']?></td>
         <td><?= $row['gender']?></td>
-        <td><?= $row['hobbies']?></td>
+        <td><?= $row['hobby']?></td>
         <td><?= $row['country']?></td>
         <td><img src="./uploads/<?= $row['file']?>" width="100" alt="profile image"></td>
         <td>

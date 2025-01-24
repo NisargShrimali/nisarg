@@ -1,7 +1,5 @@
-<!doctype html>
-<html lang="en">
+<html>
   <head>
-  
     <title>Own AdminLTE </title>
     <link
       rel="stylesheet"
@@ -35,12 +33,63 @@
       crossorigin="anonymous"
     />
   </head>
+  
+  <body>
   <?php 
-    include ("header.php"); 
-    include ("sidebar.php");
-    include ("footer.php"); 
+    include 'header.php';
+    include 'sidebar.php'; 
+    include 'conn.php'; 
+    $result = $conn->query("SELECT * FROM user"); 
+  
   ?>
+    <div class="container-fluid">
+      <div class="card mb-4">
+        <div class="card-header"><h3 class="card-title"><h3>User Details</h3></div>
+          <div class="card-body">
+          
+          <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                  <th>Email</th>
+                  <th>Address</th>
+                  <th>Phone No</th>
+                  <th>Gender</th>
+                  <th>Hobbies</th>
+                  <th>Country</th>
+                  <th>Profile Image</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
 
+              <tbody>
+              <?php while($row=$result->fetch_assoc()) { ?>
+          <tr>
+              <td><?= $row['first_name']?></td>
+              <td><?= $row['last_name']?></td>
+              <td><?= $row['email']?></td>
+              <td><?= $row['address']?></td>
+              <td><?= $row['phone_num']?></td>
+              <td><?= $row['gender']?></td>
+              <td><?= $row['hobbies']?></td>
+              <td><?= $row['country']?></td>
+              <td><img src="./uploads/<?= htmlspecialchars($row['file'])?>" width="100" alt="profile image"></td>
+              
+              <td>
+              <a href="update.php?id=<?= $row['id']?>">Edit</a>
+              <a href="delete.php?id=<?= $row['id']?>" onclick="return confirm('Are You Sure Want To Delete?')">Delete</a>    
+              </td>
+          </tr>
+          <?php }
+          ?>
+        </tbody>
+
+      </table>
+      </div>      
+    </div>
+
+  <?php include ("footer.php"); ?>
     <script
       src="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.10.1/browser/overlayscrollbars.browser.es6.min.js"
       integrity="sha256-dghWARbRe2eLlIJ56wNB+b760ywulqK3DzZYEpsg2fQ="
@@ -79,4 +128,6 @@
     </script>
   </body>
 </html>
+
+
 
