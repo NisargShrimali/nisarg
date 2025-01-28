@@ -7,6 +7,7 @@ if(isset($_POST['add'])){
     $last_name = $_POST['last_name'];
     $email = $_POST['email'];
     $pass = $_POST['pass'];
+    $encrypt = password_hash($pass,PASSWORD_BCRYPT);
     $cpass = $_POST['cpass'];
     $address = $_POST['address'];
     $phone = $_POST['phone'];
