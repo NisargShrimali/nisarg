@@ -44,7 +44,7 @@
   ?>
     <div class="container-fluid">
       <div class="card mb-4">
-        <div class="card-header"><h3 class="card-title"><h3>User Details</h3></div>
+        <div class="card-header"><h3 class="card-title">User Details</h3></div>
           <div class="card-body">
           
           <table class="table table-bordered">

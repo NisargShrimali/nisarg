@@ -2,6 +2,7 @@
 
 include "header.php";
 include "sidebar.php";
+require_once "oopadd.php";
 ?>
 
 <html>
@@ -14,43 +15,43 @@ include "sidebar.php";
                         <div class="mb-3">
                             <label>First Name:-</label>
                             <input type="text" name="first_name" class="form-control" value="<?= htmlspecialchars($first_name) ?>"/>
-                            <span class="text-danger"><?= $errors['first_name'] ?? '' ?></span>
+                            <span class="text-danger"><?= $error['first_name'] ?? '' ?></span>
                         </div>
 
                         <div class="mb-3">
                             <label>Last Name:-</label>
                             <input type="text" name="last_name" class="form-control" value="<?= htmlspecialchars($last_name) ?>" />
-                            <span class="text-danger"><?= $errors['last_name'] ?? '' ?></span>
+                            <span class="text-danger"><?= $error['last_name'] ?? '' ?></span>
                         </div>
 
                         <div class="mb-3">
                             <label>Email:-</label>
                             <input type="email" name="email" class="form-control" value="<?= htmlspecialchars($email) ?>" />
-                            <span class="text-danger"><?= $errors['email'] ?? '' ?></span>
+                            <span class="text-danger"><?= $error['email'] ?? '' ?></span>
                         </div>
 
                         <div class="mb-3">
                             <label>Password:-</label>
                             <input type="password" name="password" class="form-control" />
-                            <span class="text-danger"><?= $errors['password'] ?? '' ?></span>
+                            <span class="text-danger"><?= $error['password'] ?? '' ?></span>
                         </div>
 
                         <div class="mb-3">
                             <label>Confirm Password:-</label>
                             <input type="password" name="conf_pass" class="form-control" />
-                            <span class="text-danger"><?= $errors['conf_pass'] ?? '' ?></span>
+                            <span class="text-danger"><?= $error['conf_pass'] ?? '' ?></span>
                         </div>
 
                         <div class="mb-3">
                             <label>Address:-</label>
                             <input type="text" name="address" class="form-control" value="<?= htmlspecialchars($address) ?>" />
-                            <span class="text-danger"><?= $errors['address'] ?? '' ?></span>
+                            <span class="text-danger"><?= $error['address'] ?? '' ?></span>
                         </div>
 
                         <div class="mb-3">
                             <label>Phone Number:-</label>
                             <input type="number" name="phone_num" class="form-control" value="<?= htmlspecialchars($phone_num) ?>" />
-                            <span class="text-danger"><?= $errors['phone_num'] ?? '' ?></span>
+                            <span class="text-danger"><?= $error['phone_num'] ?? '' ?></span>
                         </div>
 
                         <div class="mb-3">
@@ -59,7 +60,7 @@ include "sidebar.php";
                                 <input type="radio" name="gender" value="male" <?= $gender == 'male' ? "checked" : "" ?>>Male
                                 <input type="radio" name="gender" value="female" <?= $gender == 'female' ? "checked" : "" ?>>Female
                             </div>
-                                <span class="text-danger"><?= $errors['gender'] ?? '' ?></span>
+                                <span class="text-danger"><?= $error['gender'] ?? '' ?></span>
                         </div>
 
                         <div class="mb-3">
@@ -68,7 +69,7 @@ include "sidebar.php";
                                 <input type="checkbox" name="hobbies[]" value="Cricket" <?= strpos($hobbies, "Cricket") !== false ? "checked" : "" ?>>Cricket
                                 <input type="checkbox" name="hobbies[]" value="Travelling" <?= strpos($hobbies, "Travelling") !== false ? "checked" : "" ?>>Travelling
                             </div>
-                                <span class="text-danger"><?= $errors['hobbies'] ?? '' ?></span>
+                                <span class="text-danger"><?= $error['hobbies'] ?? '' ?></span>
                         </div>
 
                         <div class="mb-3">
@@ -79,13 +80,13 @@ include "sidebar.php";
                                 <option value="USA" <?= $country == "USA" ? "selected" : "" ?>>USA</option>
                                 <option value="UK" <?= $country == "UK" ? "selected" : "" ?>>UK</option>
                             </select>
-                                <span class="text-danger"><?= $errors['country'] ?? '' ?></span>
+                                <span class="text-danger"><?= $error['country'] ?? '' ?></span>
                         </div>
 
                         <div class="mb-3">
                             <label>Profile Image:-</label>
                             <input type="file" name="file" class="form-control">
-                            <span class="text-danger"><?= $errors['file'] ?? '' ?></span>
+                            <span class="text-danger"><?= $error['file'] ?? '' ?></span>
                         </div>
 
                         <div class="card-footer">
