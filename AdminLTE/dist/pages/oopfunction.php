@@ -42,7 +42,9 @@ class CRUD
 
     public function delete($rid)
         {
-            $deleterecord = mysqli_query($this->con,"DELETE FROM user WHERE id = $rid");
+            $deleterecord = mysqli_query($this->con,"DELETE from user WHERE id = $rid");
             return $deleterecord;
+            
         }
     }
+

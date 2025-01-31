@@ -6,29 +6,37 @@ if(isset($_POST['login'])){
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    $query=mysqli_query($conn,"SELECT * FROM `user` where email='$email' && password='$password'");
+    $query=mysqli_query($conn,"SELECT * FROM `user` where email='$email'");
+    $row = mysqli_fetch_assoc($query);
 
-    if (mysqli_num_rows($query) == 0){
-            $_SESSION['message']="Login Failed. User not Found!";
-            header('location:login.php');
+    if(!$row)
+    {
+        $_SESSION['message'] = "Login Failed,User Not Found!!";
+        header('Location: login.php');
+        exit();
     }
-    else{
-               
-            $row=mysqli_fetch_array($query);
-            if (isset($_POST['remember'])){
-                    
-                    setcookie("user", $row['email'], time() + (86400 * 30));
-                    setcookie("password", $row['password'], time() + (86400 * 30));
-            }
-            $_SESSION['login_in']=true;     
-            $_SESSION['uid']=$row['id'];
-            $_SESSION['first']=$row['first_name'];
-            $_SESSION['last']=$row['last_name'];
-            header('location:index.php');
+
+    if(password_verify($password , $row['password']))
+    {
+        if(isset($_POST['remember']))
+        {
+                setcookie("user", $row['email'], time() + (86400 * 30));
+                setcookie("password", $password , time() + (86400 * 30));
+        }
+
+        $_SESSION['login_in']=true;
+        $_SESSION['uid']=$row['id'];
+        $_SESSION['first']=$row['first_name'];
+        $_SESSION['last']=$row['last_name'];
+        header('Location: index.php');
+        exit();
+    }else{
+        $_SESSION['message'] = "Invalid email or password";
+        header('Location: login.php');
+        exit();
     }
-}
-else{
-    header('location:login.php');
-    $_SESSION['message']="Please Login!";
-}
-?>
+ }else{
+        $_SESSION['message'] = "Please login";
+        header('Location: login.php');
+        exit();
+ }

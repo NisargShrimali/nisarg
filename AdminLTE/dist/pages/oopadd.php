@@ -69,10 +69,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['oop_add'])){
     if (move_uploaded_file($tempname, $folder)) {
             $error = "";
         } else {
-            $error = "Error uploading file";
+            $error['file'] = "Error uploading file";
         }
         } else {
-            $error = "File is Required";
+            $error['file'] = "File is Required";
         }
         
     if(empty($error)){

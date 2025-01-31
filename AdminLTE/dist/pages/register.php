@@ -31,7 +31,7 @@ if(isset($_POST['register'])){
         $sql = "SELECT * FROM register WHERE email = '$email'";
         $result = mysqli_query($conn , $sql);
         if(mysqli_num_rows($result) > 0){
-            $emailErr = "User Already Exists";
+            $emailErr = "Email Already Exists";
         }
     }
 
@@ -39,10 +39,12 @@ if(isset($_POST['register'])){
         $passwordErr = "required";
     }else{
         $password = $_POST['password'];
-        //$encrypt = password_hash($password,PASSWORD_BCRYPT);
-        //print_r($encrypt); exit;
+        
+        
         if(strlen($password) < 5){
             $passwordErr = "Password Minimum length Should be 5";
+        }else{
+            $password = password_hash($password,PASSWORD_DEFAULT);
         }
     }
 
@@ -78,8 +80,8 @@ if(isset($_POST['register'])){
     <body>
     <div class="container">
         <div class="card p-4">
-            <h2 class="text-center">Register </h2>
-            <form method="POST" action="">
+           <h2 class="text-center">Register </h2>
+              <form method="POST" action="">
                 <div class="mb-3">
                     <label for="first_name" class="form-label">First Name:-</label>
                     <input type="text" name="first_name" id="first_name" class="form-control" value="<?= htmlspecialchars($first_name ?? '') ?>">

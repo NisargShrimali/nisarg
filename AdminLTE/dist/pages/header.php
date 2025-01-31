@@ -77,7 +77,7 @@
             </li>
             
             <li class="nav-item dropdown user-menu">
-              <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+              <a href="#" class="nav-link dropdown-toggle show" data-bs-toggle="dropdown">
                 <img
                   src="uploads/<?= htmlspecialchars($row['file']) ?>"
                   class="user-image rounded-circle shadow"
