@@ -13,19 +13,19 @@ if(isset($_POST['register'])){
     }
 
     if(empty($_POST['first_name'])){
-        $firstnameErr = "required";
+        $firstnameErr = "first name required";
     }else{
         $first_name = input_data($_POST['first_name']);
     }
 
     if(empty($_POST['last_name'])){
-        $lastnameErr = "required";
+        $lastnameErr = "last name required";
     }else{
         $last_name = input_data($_POST['last_name']);
     }
 
     if(empty($_POST['email'])){
-        $emailErr = "required";
+        $emailErr = "email is required";
     }else{
         $email = input_data($_POST['email']);
         $sql = "SELECT * FROM register WHERE email = '$email'";
@@ -36,7 +36,7 @@ if(isset($_POST['register'])){
     }
 
     if(empty($_POST['password'])){
-        $passwordErr = "required";
+        $passwordErr = "password is required";
     }else{
         $password = $_POST['password'];
         

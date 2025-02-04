@@ -10,4 +10,3 @@ $conn = mysqli_connect($server,$user,$pass,$db);
 if($conn->connect_error){
     die("Connectioned Failed".$conn->connect_error);
 }
-

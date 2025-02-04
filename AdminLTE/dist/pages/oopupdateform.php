@@ -26,38 +26,49 @@ if(isset($_GET['id'])){
                         <div class="mb-3">
                             <label>First Name:-</label>
                             <input type="text" name="first_name" class="form-control" value="<?php echo $user['first_name']; ?>" />
+                            <span class="text-danger"><?= $errors['first_name'] ?? '' ?></span>
                         </div>
 
                         <div class="mb-3">
                             <label>Last Name:-</label>
                             <input type="text" name="last_name" class="form-control" value="<?php echo $user['last_name']; ?>"  />
+                            <span class="text-danger"><?= $errors['last_name'] ?? '' ?></span>
                         </div>
 
                         <div class="mb-3">
                             <label>Email:-</label>
                             <input type="email" name="email" class="form-control" value="<?php echo $user['email']; ?>"  />
+                            <span class="text-danger"><?= $errors['email'] ?? '' ?></span>
                         </div>
 
                         <div class="mb-3">
                             <label>Address:-</label>
                             <input type="text" name="address" class="form-control" value="<?php echo $user['address']; ?>"  />
+                            <span class="text-danger"><?= $errors['address'] ?? '' ?></span>
                         </div>
 
                         <div class="mb-3">
                             <label>Phone Number</label>
                             <input type="number" name="phone_num" class="form-control" value="<?php echo $user['phone_num']; ?>"  />
+                            <span class="text-danger"><?= $errors['phone_num'] ?? '' ?></span>
                         </div>
 
                         <div class="mb-3">
                             <label>Gender:-</label>
+                         <div>
                             <input type="radio" name="gender" value="male" <?php echo($user['gender'] == 'male') ? 'checked' : '';?> >Male
                             <input type="radio" name="gender" value="female" <?php echo($user['gender'] == 'female') ? 'checked' : '';?> > Female
+                         </div>
+                            <span class="text-danger"><?= $errors['gender'] ?? '' ?></span>
                         </div>
 
                         <div class="mb-3">
-                            <label>Country:-</label>
+                            <label>Hobbies:-</label>
+                         <div>
                             <input type="checkbox" name="hobbies[]" value="Cricket" <?php echo strpos($user['hobbies'], 'Cricket') !== false ? 'checked': '';?> >Cricket
                             <input type="checkbox" name="hobbies[]" value="Travelling" <?php echo strpos($user['hobbies'], 'Travelling') !== false ? 'checked': '';?> >Travelling
+                         </div>
+                            <span class="text-danger"><?= $errors['hobbies'] ?? '' ?></span>
                         </div>
 
                         <div class="mb-3">
@@ -67,11 +78,13 @@ if(isset($_GET['id'])){
                                 <option value="USA" <?php echo ($user['country'] == 'USA') ? 'selected' : ''; ?>>USA</option>
                                 <option value="UK" <?php echo ($user['country'] == 'UK') ? 'selected' : ''; ?>>UK</option>
                             </select><br>
+                            <span class="text-danger"><?= $errors['country'] ?? '' ?></span>
                         </div>
 
                         <div class="mb-3">
                             <label>Profile Image:-</label>
                             <input type="file" name="file" class="form-control" />
+                            <span class="text-danger"><?= $errors['file'] ?? '' ?></span>
                         </div>
                       
                         <div class="card-footer">

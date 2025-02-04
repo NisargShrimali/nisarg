@@ -3,9 +3,20 @@
 include 'oopfunction.php';
 $updatedata = new CRUD();
 
+$errors = [];
+$first_name = $last_name = $email =
+$address = $phone_num = $gender = $hobbies = $country = "";
+$filename = "";
+
 if(($_SERVER['REQUEST_METHOD'] === 'POST')){
     $id = $_POST['id'];
-    $first_name = $_POST['first_name'];
+    
+    $first_name = trim($_POST['first_name']);
+    if(empty($first_name)){
+        $errors['first_name'] = "First Name is Required";
+    }
+    
+
     $last_name = $_POST['last_name'];
     $email = $_POST['email'];
     $address = $_POST['address'];
@@ -29,6 +40,7 @@ if(($_SERVER['REQUEST_METHOD'] === 'POST')){
     }
 
     $sql = $updatedata->update($first_name,$last_name,$email,$address,$phone_num,$gender,$hobbies,$country,$filename,$id);
+    //$sql1 = $updatedata->update($first_name,$last_name,$email,$address,$phone_num,$gender,$hobbies,$country,"",$id);
     if($sql)
     {
         echo "<script>alert('Updated successfully');</script>";

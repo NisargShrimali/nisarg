@@ -41,6 +41,18 @@
   <?php 
     include ("header.php"); 
     include ("sidebar.php");   
+
+
+    if(isset($_GET['id'])){
+      $id = $_GET['id'];
+      $result = $conn->query("SELECT * FROM user WHERE id=$id");
+      if($result && $result->num_rows > 0){
+      $user = $result->fetch_assoc();
+    }else{
+      die("User Not Found.");
+    }
+  }
+  
     ?>
 
 <body>                
@@ -53,7 +65,7 @@
                   <div class="mb-3">
                       <label>First Name:-</label>
                       <input type="text" name="first_name" class="form-control" value="<?php echo $user['first_name'];?>" />
-                      <span class="text-danger"><?= $fnameErr ?? '' ?></span>
+                      <span class="text-danger"><?= $firstnameErr ?? '' ?></span>
                   </div>
                   <div class="mb-3">
                       <label>Last Name:-</label>
@@ -65,16 +77,7 @@
                       <input type="email" name="email" class="form-control" value="<?php echo $user['email'];?>" />
                       <span class="text-danger"><?= $emailErr ?? '' ?></span>
                   </div>
-                  <div class="mb-3">
-                      <label>Password:-</label>
-                      <input type="password" name="password" value="<?php echo $user['password'];?>" class="form-control" />
-                      <span class="text-danger"><?= $passwordErr ?? '' ?></span>
-                  </div>
-                  <div class="mb-3">
-                      <label>Confirm Password:-</label>
-                      <input type="password" name="conf_pass" value="<?php echo $user['conf_pass'];?>" class="form-control" />
-                      <span class="text-danger"><?= $cpasswordErr ?? '' ?></span>
-                  </div>
+                  
           
                   <div class="mb-3">
                       <label>Address:-</label>
@@ -115,6 +118,7 @@
               </div>
 
               <div class="mb-3">
+                <img src="uploads/<?= htmlspecialchars($user['file']) ?>" width="100" height="100" alt="profile image"><br>
                       <label>Profile Image:-</label>
                       <input type="file" name="file" class="form-control" />
                       <span class="text-danger"><?= $imageErr ?? '' ?></span>

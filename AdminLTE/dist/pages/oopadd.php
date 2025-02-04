@@ -29,8 +29,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['oop_add'])){
 
     $password = trim($_POST['password']);
     $conf_pass = trim($_POST['conf_pass']);
-    if(empty($password)){
-        $error['password'] = "Password is Required";
+    if(empty($password) || !preg_match('/^(?=.*\d)(?=.*[A-Za-z])[0-9A-Za-z!@#$%]{8,12}$/', $password)){
+        $error['password'] = "Password does not meet the requirements";
     } elseif($password !== $conf_pass) {
         $error['conf_pass'] = "Password is not matched";
     }

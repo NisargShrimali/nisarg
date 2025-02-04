@@ -36,10 +36,11 @@ if(isset($_POST['add'])){
             $passwordErr = "Password is required";
         } else {
             $password = $_POST["password"];
-            if (strlen($password) < 5) {
-                $passwordErr = "Password Minimun length should be 5 character";
+            if (!preg_match('/^(?=.*\d)(?=.*[A-Za-z])[0-9A-Za-z!@#$%]{8,12}$/', $password)) {
+                $passwordErr = "Password Minimun length should be 8 character include uppercase and lowercase character.";
             }
         }
+        
         
         if (empty($_POST["conf_pass"])) {
             $cpasswordErr = "Confirm Password is required";

@@ -35,6 +35,6 @@
     </select><br><br>
 
     <label>Profile Image:-</label>
-    <input type="file" name="file" accept="image/*"><br><br>
+    <input type="file" name="file" value=<img src="./uploads/<?= $row['file']?>" accept="image/*"><br><br>
     <button type="submit" class="submit-btn">Update</button>
 </form>

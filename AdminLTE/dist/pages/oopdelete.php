@@ -8,7 +8,7 @@ if(isset($_GET['id']))
     $sql = $deletedata->delete($rid);
     if($sql)
     {
-    echo "<script>alert('Record deleted successfully');</script>";
+    echo "<script>alert('Deleted successfully');</script>";
     echo "<script>window.location.href='oopdisplay.php'</script>";
     }
 }
