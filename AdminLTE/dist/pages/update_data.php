@@ -79,13 +79,14 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         if (!move_uploaded_file($tempname, $folder)) {
             die("Failed to move the uploaded file.");
         }
+    }
         if (empty($firstnameErr) && empty($lastnameErr) && empty($emailErr) &&
         empty($messageErr) && empty($numberErr) && empty($genderErr) && empty($hobbiesErr) && empty($countryErr)) 
         {
             $sql = "UPDATE user SET first_name = '$first_name',last_name = '$last_name',email = '$email', address = '$address',phone_num = '$phone_num', gender = '$gender',hobbies = '$hobbies',country = '$country'  ";
         
             if(!empty($filename)){
-                $sql .= ", file = '$filename'";
+                $sql.= ", file = '$filename'";
             }
 
             $sql .= "WHERE id = '$id'"; 
@@ -102,5 +103,5 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         
         }
 
-    }
+    
 }
