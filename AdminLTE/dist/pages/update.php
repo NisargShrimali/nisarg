@@ -62,7 +62,7 @@
                       <div class="mb-3">
                         <label>Phone No</label>
                         <?php $phone_num = isset($_POST ['phone_num'])?$_POST['phone_num']:$user['phone_num']; ?>
-                        <input type="text" name="phone_num" value="<?php echo $phone_mum; ?>" class="form-control" />
+                        <input type="text" name="phone_num" value="<?php echo $phone_num; ?>" class="form-control" />
                         <span class="text-danger"><?= $numberErr ?? '' ?></span>
                       </div>
 

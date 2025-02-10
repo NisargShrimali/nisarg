@@ -65,6 +65,29 @@
                   </li>
                 </ul>
               </li>
+              <li class="nav-item menu-open">
+                <a href="#" class="nav-link active">
+                  <i class="nav-icon bi bi-speedometer"></i>
+                  <p>
+                  AJAX CRUD OPERATION
+                    <i class="nav-arrow bi bi-chevron-right"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="ajax_form.php" class="nav-link active">
+                      <i class="nav-icon bi bi-circle"></i>
+                      <p>User Form</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="ajax_display.php" class="nav-link">
+                      <i class="nav-icon bi bi-circle"></i>
+                      <p>Display User Details</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
           </nav>
         </div>
 </aside>

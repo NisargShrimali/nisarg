@@ -25,40 +25,45 @@ if(isset($_GET['id'])){
                         <input type="hidden" name="id" value="<?php echo $user['id']; ?>">
                         <div class="mb-3">
                             <label>First Name:-</label>
+                            <?php $first_name = isset($_POST ['first_name'])?$_POST['first_name']:$user['first_name']; ?>
                             <input type="text" name="first_name" class="form-control" value="<?php echo $user['first_name']; ?>" />
                             <span class="text-danger"><?= $errors['first_name'] ?? '' ?></span>
                         </div>
 
                         <div class="mb-3">
                             <label>Last Name:-</label>
+                            <?php $last_name = isset($_POST ['last_name'])?$_POST['last_name']:$user['last_name']; ?>
                             <input type="text" name="last_name" class="form-control" value="<?php echo $user['last_name']; ?>"  />
                             <span class="text-danger"><?= $errors['last_name'] ?? '' ?></span>
                         </div>
 
                         <div class="mb-3">
                             <label>Email:-</label>
+                            <?php $email = isset($_POST ['email'])?$_POST['email']:$user['email']; ?>
                             <input type="email" name="email" class="form-control" value="<?php echo $user['email']; ?>"  />
                             <span class="text-danger"><?= $errors['email'] ?? '' ?></span>
                         </div>
 
                         <div class="mb-3">
-                            <label>Address:-</label>
+                            <label>Address:-</label><?php $address = isset($_POST ['address'])?$_POST['address']:$user['address']; ?>
                             <input type="text" name="address" class="form-control" value="<?php echo $user['address']; ?>"  />
                             <span class="text-danger"><?= $errors['address'] ?? '' ?></span>
                         </div>
 
                         <div class="mb-3">
                             <label>Phone Number</label>
+                            <?php $phone_num = isset($_POST ['phone_num'])?$_POST['phone_num']:$user['phone_num']; ?>
                             <input type="number" name="phone_num" class="form-control" value="<?php echo $user['phone_num']; ?>"  />
                             <span class="text-danger"><?= $errors['phone_num'] ?? '' ?></span>
                         </div>
 
                         <div class="mb-3">
                             <label>Gender:-</label>
-                         <div>
+                            <?php $gender = isset($_POST['gender']) ? $_POST['gender']:$user['gender']; ?>
+                         
                             <input type="radio" name="gender" value="male" <?php echo($user['gender'] == 'male') ? 'checked' : '';?> >Male
                             <input type="radio" name="gender" value="female" <?php echo($user['gender'] == 'female') ? 'checked' : '';?> > Female
-                         </div>
+                
                             <span class="text-danger"><?= $errors['gender'] ?? '' ?></span>
                         </div>
 
@@ -73,6 +78,7 @@ if(isset($_GET['id'])){
 
                         <div class="mb-3">
                             <label>Country:-</label>
+                            <?php $country = isset($_POST['country']) ? $_POST['country']:$user['country']; ?>
                             <select name="country" class="form-control">
                                 <option value="India" <?php echo ($user['country'] == 'India') ? 'selected' : ''; ?>>India</option>
                                 <option value="USA" <?php echo ($user['country'] == 'USA') ? 'selected' : ''; ?>>USA</option>
@@ -82,10 +88,11 @@ if(isset($_GET['id'])){
                         </div>
 
                         <div class="mb-3">
-                            <label>Profile Image:-</label>
-                            <input type="file" name="file" class="form-control" />
-                            <span class="text-danger"><?= $errors['file'] ?? '' ?></span>
-                        </div>
+                      <img src="uploads/<?= htmlspecialchars($user['file']) ?>" width="100" height="100" alt="Profile Image"><br>
+                      <label>Update Profile</label>
+                        <input type="file" name="file" accept="image/*" class="form-control"  />
+                      </div>
+                      
                       
                         <div class="card-footer">
                             <button type="submit" class="btn btn-primary" name="update">Update</button>
