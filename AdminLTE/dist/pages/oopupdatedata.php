@@ -3,9 +3,9 @@
 include 'oopfunction.php';
 $updatedata = new CRUD();
 
-$errors = [];
+$error=[];
 $first_name = $last_name = $email = $address = $phone_num = $gender = $hobbies = $country = "";
-//$filename = "";
+$filename = "";
 
 if(($_SERVER['REQUEST_METHOD'] === 'POST')){
     
@@ -13,45 +13,44 @@ if(($_SERVER['REQUEST_METHOD'] === 'POST')){
     
     $first_name = trim($_POST['first_name']);
     if(empty($first_name)){
-        $errors['first_name'] = "First Name is Required";
+        $error['first_name'] = "First Name is Required";
     }
     
-
     //$last_name = $_POST['last_name'];
     $last_name = trim($_POST['last_name']);
     if (empty($last_name)) {
-        $errors['last_name'] = "Last Name is required.";
+        $error['last_name'] = "Last Name is required.";
     }
 
     //$email = $_POST['email'];
     $email = trim($_POST['email']);
     if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $errors['email'] = "Valid Email is required.";
+        $error['email'] = "Valid Email is required.";
     }
     //$address = $_POST['address'];
     $address = trim($_POST['address']);
     if (empty($address)) {
-        $errors['address'] = "Address is required.";
+        $error['address'] = "Address is required.";
     }
     //$phone_num = $_POST['phone_num'];
     $phone_num = trim($_POST['phone_num']);
     if (empty($phone_num) || !preg_match('/^\d{10}$/', $phone_num)) {
-        $errors['phone_num'] = "10 digit Number required";
+        $error['phone_num'] = "10 digit Number required";
     }
     //$gender = $_POST['gender'];
     $gender = $_POST['gender'] ?? "";
     if (empty($gender)) {
-        $errors['gender'] = "Gender is required.";
+        $error['gender'] = "Gender is required.";
     }
     //$hobbies = implode(",",$_POST['hobbies']);
     $hobbies = isset($_POST['hobbies']) ? implode(", ", $_POST['hobbies']) : "";
     if (empty($hobbies)) {
-        $errors['hobbies'] = "At least one Hobby is required.";
+        $error['hobbies'] = "At least one Hobby is required.";
     }
     //$country = $_POST['country'];
     $country = $_POST['country'] ?? "";
     if (empty($country)) {
-        $errors['country'] = "Country is required.";
+        $error['country'] = "Country is required.";
     }
 
     $filename = $_FILES["file"]["name"];
@@ -59,7 +58,7 @@ if(($_SERVER['REQUEST_METHOD'] === 'POST')){
 
     if (!empty($filename)) {
 
-        $folder = "uploads/". basename($filename);
+        $folder = "./uploads/" .$filename; 
         if (!move_uploaded_file($tempname, $folder)) {
             echo "<script>alert('Failed to upload file');</script>";
             $folder = ""; 
@@ -73,11 +72,11 @@ if(($_SERVER['REQUEST_METHOD'] === 'POST')){
         $filename = $user['file'];   
     }
   }
-  if (empty($errors)) {
+  if (empty($error)) {
     $sql=$updatedata->update($first_name,$last_name,$email,$address,$phone_num,$gender,$hobbies,$country,$filename,$id);
     if($sql){
     echo "<script>alert('Record Updated successfully');</script>";
     echo "<script>window.location.href='oopdisplay.php'</script>";
     }
-}
+ }
 }

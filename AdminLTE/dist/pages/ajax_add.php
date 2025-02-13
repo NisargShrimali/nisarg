@@ -12,6 +12,7 @@
     
     $last_name = $_POST['last_name'] ?? '';
     $email = $_POST['email'] ?? '';
+    $password = password_hash($password,PASSWORD_DEFAULT);
     $password = $_POST['password'] ?? '';
     $conf_pass = $_POST['conf_pass'] ?? '';
     $address = $_POST['address'] ?? '';
@@ -87,7 +88,7 @@
         $filename = $_FILES["file"]["name"];
         $tempname = $_FILES["file"]["tmp_name"];
         $folder = "./uploads/" .$filename;
-        if(!move_uploaded_file($tempname, $upload_path)) {
+        if(!move_uploaded_file($tempname, $folder)) {
           $errors['file'] = "Failed to upload the file.";
       }
      }
@@ -98,7 +99,7 @@
              VALUES('$first_name','$last_name','$email','$password','$conf_pass','$address','$phone_num','$gender','$hobbies','$country','$filename')";
      
       if(mysqli_query($conn,$sql)){
-        $response = ["status" => "success", "message" => "User data successfully inserted."];
+        $response = ["status" => "success", "message" => "Data Inserted."];
       }else{
         $response = ["status" => "error", "message" => "Database error: " . mysqli_error($conn)];
       }

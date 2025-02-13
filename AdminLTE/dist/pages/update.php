@@ -26,7 +26,7 @@
   <html>
     <body>                
       <div class="card card-primary card-outline mb-4">
-        <div class="card-header"><div class="card-title">Input User Details..</div></div>
+        <div class="card-header"><div class="card-title">User Details..</div></div>
           <form action="" method="POST" enctype="multipart/form-data">
             <div class="card-body">
               <input type="hidden" name="id" value="<?php echo $user['id']; ?>">

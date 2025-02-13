@@ -27,34 +27,34 @@ if(isset($_GET['id'])){
                             <label>First Name:-</label>
                             <?php $first_name = isset($_POST ['first_name'])?$_POST['first_name']:$user['first_name']; ?>
                             <input type="text" name="first_name" class="form-control" value="<?php echo $user['first_name']; ?>" />
-                            <span class="text-danger"><?= $errors['first_name'] ?? '' ?></span>
+                            <span class="text-danger"><?= $error['first_name'] ?? '' ?></span>
                         </div>
 
                         <div class="mb-3">
                             <label>Last Name:-</label>
                             <?php $last_name = isset($_POST ['last_name'])?$_POST['last_name']:$user['last_name']; ?>
                             <input type="text" name="last_name" class="form-control" value="<?php echo $user['last_name']; ?>"  />
-                            <span class="text-danger"><?= $errors['last_name'] ?? '' ?></span>
+                            <span class="text-danger"><?= $error['last_name'] ?? '' ?></span>
                         </div>
 
                         <div class="mb-3">
                             <label>Email:-</label>
                             <?php $email = isset($_POST ['email'])?$_POST['email']:$user['email']; ?>
                             <input type="email" name="email" class="form-control" value="<?php echo $user['email']; ?>"  />
-                            <span class="text-danger"><?= $errors['email'] ?? '' ?></span>
+                            <span class="text-danger"><?= $error['email'] ?? '' ?></span>
                         </div>
 
                         <div class="mb-3">
                             <label>Address:-</label><?php $address = isset($_POST ['address'])?$_POST['address']:$user['address']; ?>
                             <input type="text" name="address" class="form-control" value="<?php echo $user['address']; ?>"  />
-                            <span class="text-danger"><?= $errors['address'] ?? '' ?></span>
+                            <span class="text-danger"><?= $error['address'] ?? '' ?></span>
                         </div>
 
                         <div class="mb-3">
                             <label>Phone Number</label>
                             <?php $phone_num = isset($_POST ['phone_num'])?$_POST['phone_num']:$user['phone_num']; ?>
                             <input type="number" name="phone_num" class="form-control" value="<?php echo $user['phone_num']; ?>"  />
-                            <span class="text-danger"><?= $errors['phone_num'] ?? '' ?></span>
+                            <span class="text-danger"><?= $error['phone_num'] ?? '' ?></span>
                         </div>
 
                         <div class="mb-3">
@@ -63,8 +63,7 @@ if(isset($_GET['id'])){
                          
                             <input type="radio" name="gender" value="male" <?php echo($user['gender'] == 'male') ? 'checked' : '';?> >Male
                             <input type="radio" name="gender" value="female" <?php echo($user['gender'] == 'female') ? 'checked' : '';?> > Female
-                
-                            <span class="text-danger"><?= $errors['gender'] ?? '' ?></span>
+                            <span class="text-danger"><?= $error['gender'] ?? '' ?></span>
                         </div>
 
                         <div class="mb-3">
@@ -73,7 +72,7 @@ if(isset($_GET['id'])){
                             <input type="checkbox" name="hobbies[]" value="Cricket" <?php echo strpos($user['hobbies'], 'Cricket') !== false ? 'checked': '';?> >Cricket
                             <input type="checkbox" name="hobbies[]" value="Travelling" <?php echo strpos($user['hobbies'], 'Travelling') !== false ? 'checked': '';?> >Travelling
                          </div>
-                            <span class="text-danger"><?= $errors['hobbies'] ?? '' ?></span>
+                            <span class="text-danger"><?= $error['hobbies'] ?? '' ?></span>
                         </div>
 
                         <div class="mb-3">
@@ -84,14 +83,14 @@ if(isset($_GET['id'])){
                                 <option value="USA" <?php echo ($user['country'] == 'USA') ? 'selected' : ''; ?>>USA</option>
                                 <option value="UK" <?php echo ($user['country'] == 'UK') ? 'selected' : ''; ?>>UK</option>
                             </select><br>
-                            <span class="text-danger"><?= $errors['country'] ?? '' ?></span>
+                            <span class="text-danger"><?= $error['country'] ?? '' ?></span>
                         </div>
 
-                        <div class="mb-3">
+                    <div class="mb-3">
                       <img src="uploads/<?= htmlspecialchars($user['file']) ?>" width="100" height="100" alt="Profile Image"><br>
                       <label>Update Profile</label>
                         <input type="file" name="file" accept="image/*" class="form-control"  />
-                      </div>
+                    </div>
                       
                       
                         <div class="card-footer">
