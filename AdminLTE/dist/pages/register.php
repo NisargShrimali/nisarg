@@ -40,7 +40,6 @@ if(isset($_POST['register'])){
     }else{
         $password = $_POST['password'];
         
-        
         if(strlen($password) < 5){
             $passwordErr = "Password Minimum length Should be 5";
         }else{
@@ -59,9 +58,7 @@ if(isset($_POST['register'])){
         }
     }
 }
-
 ?>
-
 <html>
     <head>
         <title>Registration</title>
@@ -73,10 +70,8 @@ if(isset($_POST['register'])){
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(128, 128, 128, 0.1);
         }
-        
     </style>
     </head>
-    
     <body>
     <div class="container">
         <div class="card p-4">

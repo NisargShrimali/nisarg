@@ -1,15 +1,13 @@
 <?php
-
 include "header.php";
 include "sidebar.php";
 require_once "oopadd.php";
 ?>
-
 <html>
     <body>
         <div class="container mt-5">
             <div class="card">
-                <div class="card-header">User Details</div>
+                <div class="card-header">USER DETAILS</div>
                 <form action="" method="POST" enctype="multipart/form-data">
                     <div class="card-body">
                         <div class="mb-3">
@@ -32,13 +30,13 @@ require_once "oopadd.php";
 
                         <div class="mb-3">
                             <label>Password:-</label>
-                            <input type="password" name="password" class="form-control" />
+                            <input type="password" name="password" class="form-control" value="<?= htmlspecialchars($password) ?>" />
                             <span class="text-danger"><?= $error['password'] ?? '' ?></span>
                         </div>
 
                         <div class="mb-3">
                             <label>Confirm Password:-</label>
-                            <input type="password" name="conf_pass" class="form-control" />
+                            <input type="password" name="conf_pass" class="form-control" value="<?= htmlspecialchars($conf_pass) ?>" />
                             <span class="text-danger"><?= $error['conf_pass'] ?? '' ?></span>
                         </div>
 
@@ -96,42 +94,8 @@ require_once "oopadd.php";
                 </form>
             </div>
         </div>
+        <footer>
         <?php include ('footer.php')?>
-        <script
-      src="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.10.1/browser/overlayscrollbars.browser.es6.min.js"
-      integrity="sha256-dghWARbRe2eLlIJ56wNB+b760ywulqK3DzZYEpsg2fQ="
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
-      integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
-      crossorigin="anonymous"
-    ></script>
-    <script src="../../dist/js/adminlte.js"></script>
-    <script>
-      const SELECTOR_SIDEBAR_WRAPPER = '.sidebar-wrapper';
-      const Default = {
-        scrollbarTheme: 'os-theme-light',
-        scrollbarAutoHide: 'leave',
-        scrollbarClickScroll: true,
-      };
-      document.addEventListener('DOMContentLoaded', function () {
-        const sidebarWrapper = document.querySelector(SELECTOR_SIDEBAR_WRAPPER);
-        if (sidebarWrapper && typeof OverlayScrollbarsGlobal?.OverlayScrollbars !== 'undefined') {
-          OverlayScrollbarsGlobal.OverlayScrollbars(sidebarWrapper, {
-            scrollbars: {
-              theme: Default.scrollbarTheme,
-              autoHide: Default.scrollbarAutoHide,
-              clickScroll: Default.scrollbarClickScroll,
-            },
-          });
-        }
-      });
-    </script>
+        </footer>
     </body>
 </html>

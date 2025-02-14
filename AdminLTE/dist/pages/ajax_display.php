@@ -5,7 +5,8 @@
 <html>
   <head>
     <title>Display Data</title>
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> 
+    <script src="script.js"></script>
   </head>
   <body>
     <div class="container-fluid">
@@ -33,46 +34,7 @@
           </div>      
     </div>
 </div>
-
-    <script>
-        $(document).ready(function () {
-            getdata();
-        });
-
-        function getdata()
-        {
-            $.ajax({
-                url: "ajax_getu.php",
-                type: "GET",
-                dataType: "json",
-                success: function (response){
-                  //console.log(response);
-                    $('.userdata').empty();
-                    $.each(response, function(key ,value){
-                      //console.log(value['first_name']);
-                        $('.userdata').append('<tr>' +
-                            '<td>'+value['first_name']+'</td>\
-                            <td>'+value['last_name']+'</td>\
-                            <td>'+value['email']+'</td>\
-                            <td>'+value['address']+'</td>\
-                            <td>'+value['phone_num']+'</td>\
-                            <td>'+value['gender']+'</td>\
-                            <td>'+value['hobbies']+'</td>\
-                            <td>'+value['country']+'</td>\
-                            <td><img src="uploads/'+value['file']+'" width="100" height="100" alt="profile image"</td>\
-                            <td>\
-                            <a href="ajax_updateform.php?id='+value['id']+'" title="Edit">Edit</a>\
-                            <a href="#" data-id="'+value['id']+'" title="Delete"></a>\
-                            </td>\
-                            </tr>');
-                        
-                    });
-                }
-            });
-        }
-        </script>
-</body>
 <footer>
-  <?php include("footer.php"); ?>
+    <?php include("footer.php"); ?>
   </footer>
-  </html>
+</html>

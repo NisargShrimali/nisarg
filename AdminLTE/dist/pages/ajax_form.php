@@ -5,12 +5,13 @@ include "sidebar.php";
 <html>
     <head>
         <title>User Form</title>
-        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>   
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> 
+        <script src="script.js"></script>
     </head>
     <body>
         <div class="container mt-5">
             <div class="card">
-                <div class="card-header">user Details</div>
+                <div class="card-header">USER DETAILS</div>
                 <form id="userform" method="POST" enctype="multipart/form-data">
                     <div class="card-body">
 
@@ -80,8 +81,7 @@ include "sidebar.php";
                         <div class="mb-3">
                             <label>Profile Image:-</label>
                             <input type="file" name="file" class="form-control" />
-                        </div>
-                        
+                        </div>     
                     </div>
 
                         <div class="card-footer">
@@ -90,42 +90,6 @@ include "sidebar.php";
                 </form>
             </div>
         </div>
-        <script>
-    $(document).ready(function () {
-    $("#userform").on("submit", function (e) {
-    e.preventDefault();
-    var formData = new FormData(this);
-    $(".error-message").remove();
-
-    $.ajax({
-        url: "ajax_add.php",
-        type: "POST",
-        data: formData,
-        contentType: false,
-        processData: false,
-        dataType : "json",
-        success: function (response) {
-        if (response.status === "success") {
-            alert(response.message);
-            window.location.href = "ajax_display.php";
-            $("#userform")[0].reset();
-        } else if (response.errors) {
-
-            $.each(response.errors, function (key, message) {
-            $(`[name="${key}"]`).after(`<span class="error-message text-danger">${message}</span>`);
-            });
-        } else {
-            alert(response.message);
-        }
-        },
-        error: function (xhr) {
-        alert("Error: " + xhr.responseText);
-        }
-    });
-    });
-    });
-
-        </script>
     <footer>
         <?php include "footer.php"; ?>
       </footer>

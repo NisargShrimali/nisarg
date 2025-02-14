@@ -4,7 +4,6 @@ include 'conn.php';
 $firstnameErr = $lastnameErr = $emailErr = $passwordErr = $cpasswordErr = $messageErr = $numberErr = $genderErr = $hobbyErr = $countryErr = $imageErr = "";   
 $first_name = $last_name = $email = $password = $conf_pass = $address = $phone_num = $gender = $hobbies = $country = "";
 
-
 if(isset($_POST['add'])){
     function input_data($data) {
         $data = trim($data);
@@ -12,7 +11,6 @@ if(isset($_POST['add'])){
         $data = htmlspecialchars($data);
         return $data;
     }
-
         if (empty($_POST["first_name"])) {
             $firstnameErr = "First Name is required";
         } else {
@@ -31,7 +29,6 @@ if(isset($_POST['add'])){
             $email = input_data($_POST["email"]);
         }
         
-
         if (empty($_POST["password"])) {
             $passwordErr = "Password is required";
         } else {
@@ -40,8 +37,7 @@ if(isset($_POST['add'])){
                 $passwordErr = "Password Minimun length should be 8 character include uppercase and lowercase character.";
             }
         }
-        
-        
+             
         if (empty($_POST["conf_pass"])) {
             $cpasswordErr = "Confirm Password is required";
         } else {
@@ -57,7 +53,6 @@ if(isset($_POST['add'])){
             $address = input_data($_POST["address"]);
         }
 
-
         if (empty($_POST["phone_num"])) {
             $numberErr = "Phone Number is required";
         } else {
@@ -66,8 +61,7 @@ if(isset($_POST['add'])){
                 $numberErr = "Phone number must be 10 digits";
             }
         }
-
-        
+  
         if (empty($_POST["gender"])) {
             $genderErr = "Gender is required";
         } else {

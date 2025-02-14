@@ -4,7 +4,6 @@ define('DB_SERVER','localhost');
 define('DB_USER','root');
 define('DB_PASS','admin123');
 define('DB_NAME','oop');
-
 class CRUD
 {
     private $con;
