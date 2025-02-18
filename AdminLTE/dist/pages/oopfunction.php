@@ -38,10 +38,10 @@ class CRUD
             $updaterecord = mysqli_query($this->con,"UPDATE user SET first_name='$first_name',last_name='$last_name',email='$email',address='$address',phone_num='$phone_num',gender='$gender',hobbies='$hobbies',country='$country',file='$filename' WHERE id = '$id'");
             return $updaterecord;
         }
-
+        
     public function delete($rid)
         {
-            $deleterecord = mysqli_query($this->con,"DELETE from user WHERE id = $rid");
+            $deleterecord = mysqli_query($this->con,"DELETE from user WHERE id = '$rid'");
             return $deleterecord;
             
         }

@@ -28,12 +28,12 @@
                   </div>
                   <div class="mb-3">
                       <label>Password:-</label>
-                      <input type="password" name="password" class="form-control"   />
+                      <input type="password" name="password" class="form-control" value="<?= htmlspecialchars($password?? '') ?>"  />
                       <span class="text-danger"><?= $passwordErr ?? '' ?></span>
                   </div>
                   <div class="mb-3">
                       <label>Confirm Password:-</label>
-                      <input type="password" name="conf_pass" class="form-control" />
+                      <input type="password" name="conf_pass" class="form-control" value="<?= htmlspecialchars($conf_pass ?? '') ?>" />
                       <span class="text-danger"><?= $cpasswordErr ?? '' ?></span>
                   </div>
           

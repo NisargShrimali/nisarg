@@ -35,7 +35,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['oop_add'])){
         $error['conf_pass'] = "Password is not matched";
     }
     
-
     $address = trim($_POST['address']);
     if(empty($address)){
         $error['address'] = "Address is Required";
